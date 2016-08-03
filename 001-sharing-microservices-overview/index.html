@@ -73,7 +73,7 @@
 
     <div id="bored" class="step slide" data-x="-1500" data-y="-1500">
         <q> Microservices Overview </q>
-        <span class="footnote">by Danny Wong &lt;chunwong@hk1.ibm.com&gt;</span>
+        <span class="footnote">by <a href="https://hk.linkedin.com/in/danny-wong-a4411720" target="_blank">Danny Wong</a></span>
         <p><span class="footfootnote">Senior Architect / IBM GBS</span></p>
     </div>
 
@@ -133,7 +133,7 @@
         <p><span class="footfootnote">p.s. In other words, if things are not done right, you will suffer 1000 times more from microservices than monolithic.</span></p>
     </div>
 
-    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+    <div class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
         <p><b>Questions? Questions? Questions?</b></p>
     </div>
 
@@ -262,11 +262,11 @@
     <div class="step" data-x="3200" data-y="-12000" data-rotate="90" data-scale="4">
         <h1>Expecting eventual consistency</h1>
         <span class="footnote">This one is <strong>critical</strong>! ACID<sup>*</sup> is likely GONE! Project team MUST convince business owner to understand and accept the behavior of eventual consistency!</span>
-        <p><span class="footnote">Some patterns will help, e.g. <strong>Compensating transaction pattern</strong>.</span><p>
-          <span class="footfootnote"><sup>*</sup>We prefer BASE (Basically Available, Soft state, Eventual consistency) over ACID.</span></p>
+        <p><span class="footnote">Some patterns will help, e.g. <strong>Compensating Transaction pattern, Event Sourcing pattern</strong>, etc.</span><p>
+          <span class="footfootnote"><sup>*</sup>Data management of microservices is a HUGE and extrememly difficult topic that will be talked in separate sharing!</span></p>
     </div>
 
-    <div class="step" data-x="1200" data-y="-12000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="1100" data-y="-12000" data-rotate="90" data-scale="4">
         <h1>Design for failure</h1>
         <span class="footnote">Entire microservice system is about moving parts, i.e. many services with many remote calls</span>
         <p><span class="footnote">Design patterns like <strong>Circuit Breaker</strong>, <strong>Bulk-head</strong> are there to help.</span></p>
@@ -300,14 +300,15 @@
         <p><span class="footfootnote"><sup>*</sup>See Service Discovery section of <a href="http://microservices.io/patterns/index.html" target="_blank">here</a></span></p>
     </div>
 
-    <div class="step" data-x="-8500" data-y="-12000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="-9000" data-y="-12000" data-rotate="90" data-scale="4">
         <h1>Operational complexity</h1>
-        <span class="footnote">Again, all are moving parts and be prepared to have hundreds of instances. Each microservice should have built-in health-check (and exposed) and self-healing.</span>
+        <span class="footnote">Again, all are moving parts and be prepared to <strong>have hundreds of instances</strong>. Each microservice should have built-in health-check (and exposed) and self-healing.</span>
+        <p><span class="footnote">Also, we need different way to manage applicaiton log than traditional monolithic application, i.e. logs are usually treated as events and sent to a store for further analysis and monitoring.</span></p>
     </div>
 
     <!-- ************************** break ************************** -->
 
-    <div id="its" class="step" data-x="-10000" data-y="-12000" data-rotate="90" data-scale="5">
+    <div class="step" data-x="-11000" data-y="-12000" data-rotate="90" data-scale="5">
         <p><b>Questions? Questions? Questions?</b></p>
     </div>
 
@@ -378,7 +379,7 @@
         <b>That's it!</b>
         <p>Want to know more?</p>
         <p>Use the source, Luke!</p>
-        <p><span class="footfootnote">Up next is Cloud / Container Development and Design Patterns!</span></p>
+        <p><span class="footfootnote">Up next are <strong>Design Patterns for Microservices!</strong> (Hopefully in August 2016) and <strong>Designing Microservices - Your Data</strong> (Hopefully in September 2016)!</span></p>
     </div>
 
 
