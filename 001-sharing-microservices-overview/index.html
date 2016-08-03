@@ -1,0 +1,403 @@
+<!doctype html>
+
+<!--
+
+    Welcome to the light side of the source, young padawan.
+
+    One step closer to learn something interesting you are...
+
+                               ____
+                            _.' :  `._
+                        .-.'`.  ;   .'`.-.
+               __      / : ___\ ;  /___ ; \      __
+             ,'_ ""=-.:__;".-.";: :".-.":__;.-="" _`,
+             :' `.t""=-.. '<@.`;_  ',@:` ..-=""j.' `;
+                  `:-.._J '-.-'L__ `-.-' L_..-;'
+                    "-.__ ;  .-"  "-.  : __.-"
+                        L ' /.======.\ ' J
+                         "-.   "__"   .-"
+                        __.l"-:_JL_;-";.__
+                     .-j/'.;  ;""""  / .'\"-.
+                   .' /:`. "-.:     .-" .';  `.
+                .-"  / ;  "-. "-..-" .-"  :    "-.
+             .+"-.  : :      "-.__.-"      ;-._   \
+             ; \  `.; ;                    : : "+. ;
+             :  ;   ; ;                    : ;  : \:
+             ;  :   ; :                    ;:   ;  :
+            : \  ;  :  ;                  : ;  /  ::
+            ;  ; :   ; :                  ;   :   ;:
+            :  :  ;  :  ;                : :  ;  : ;
+            ;\    :   ; :                ; ;     ; ;
+            : `."-;   :  ;              :  ;    /  ;
+             ;    -:   ; :              ;  : .-"   :
+             :\     \  :  ;            : \.-"      :
+              ;`.    \  ; :            ;.'_..-=  / ;
+              :  "-.  "-:  ;          :/."      .'  :
+               \         \ :          ;/  __        :
+                \       .-`.\        /t-""  ":-+.   :
+                 `.  .-"    `l    __/ /`. :  ; ; \  ;
+                   \   .-" .-"-.-"  .' .'j \  /   ;/
+                    \ / .-"   /.     .'.' ;_:'    ;
+                     :-""-.`./-.'     /    `.___.'
+                           \ `t  ._  /
+                            "-.t-._:'
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Microservices Overview | by Danny Wong chunwong@hk1.ibm.com</title>
+
+    <meta name="description" content="A sharing on Microservices" />
+    <meta name="author" content="Danny Wong Chun" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/impress.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="bored" class="step slide" data-x="-1500" data-y="-1500">
+        <q> Microservices Overview </q>
+        <span class="footnote">by Danny Wong &lt;chunwong@hk1.ibm.com&gt;</span>
+        <p><span class="footfootnote">Senior Architect / IBM GBS</span></p>
+    </div>
+
+    <div class="step" data-x="0" data-y="-1500">
+        <q>Before we dive into the ocean of microservices, let us revisit the application architecture we used to know for many years!</q>
+    </div>
+
+    <div class="step" data-x="900" data-y="-1500">
+        <p>We used to see this...</p>
+        <img src="image/was_app_arch.png"></img>
+    </div>
+
+    <div class="step" data-x="1600" data-y="-1500">
+        <p>Or something like this</p>
+        <img src="image/monolithic.png"></img>
+    </div>
+
+    <div class="step" data-x="1600" data-y="-1500" data-rotate-x="90">
+        <span class="footnote">Then we'll hear...</span>
+        <p>Let's pack these resources into this</p>
+        <p><strong>jar</strong> along with those <strong>wars</strong></p>
+        <p>in that <strong>ear</strong>.</p>
+    </div>
+
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <p>We call this architectural style as <strong>Monolithic Architecture</strong>.</p>
+        <p>So, what <strong>typical challenges<sup>*</sup></strong> are we facing?</p>
+        <span class="footfootnote"><sup>*</sup>keyword is <strong>typical</strong></span>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="1800">
+        <h1>Scalability</h1>
+        <span class="footnote">Monolitic application can scale; however, it is not really economical, i.e. scaling a particular service requires scaling other components as well.</span>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="4000">
+        <h1>Resiliency</h1>
+        <span class="footnote">The malfunctioning of certain component can easily tanks entire application. E.g. Thread pools and connection pools are often managed by application server and are shared by all components in entire application.</span>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="8000">
+        <h1>Deployment</h1>
+        <p><span class="footnote">When time goes by, it is unavoidable that a deployment requires to <strong>bring down components more than it is really required.</strong>
+          Well, this will in-turn <strong>affect the time-to-market as we need to notify, get consensus, and testing with all parties</strong>.</span></p>
+    </div>
+    <div class="step" data-x="0" data-y="8000">
+        <p><span class="footnote">Also, advance deployment methods such as A-B test deployment, green-blue deployment, and canary deployment
+          are very difficult to be achieved with Monolithic Architecture.</span></p>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="12000">
+        <p>Of course, if design (both organizational design and technical design) and DevOps are done <strong>right</strong> consistently and continuously, monolithic can be very scalable, resilient, easy to deploy with good time-to-market.</p>
+    </div>
+    <div class="step" data-x="0" data-y="12000">
+        <p>Look at <a href="http://highscalability.com/blog/2014/7/21/stackoverflow-update-560m-pageviews-a-month-25-servers-and-i.html" target="_blank">StackExchange.com</a>
+          (master site of the bespoke StackOverflow.com) as an example!</p>
+        <p><span class="footfootnote">p.s. In other words, if things are not done right, you will suffer 1000 times more from microservices than monolithic.</span></p>
+    </div>
+
+    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+        <p><b>Questions? Questions? Questions?</b></p>
+    </div>
+
+    <!-- ************************** break ************************** -->
+
+    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
+        <p>Build your <b>big</b> <span class="thoughts">system</span></p>
+    </div>
+
+    <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+        <p>with <b>micro</b> services</p>
+    </div>
+
+    <div class="step" data-x="5000" data-y="1000" data-rotate="270" data-scale="6">
+        <p>So, a typical application built with microservices looks like...</p>
+    </div>
+
+    <div class="step" data-x="7000" data-y="1000" data-rotate="270" data-scale="6">
+        <img src="image/microservices.png"></img>
+    </div>
+
+    <div class="step" data-x="8600" data-y="1000" data-rotate="270" data-scale="6">
+        <p>and, a monolithic looks like...</p>
+    </div>
+
+    <div class="step" data-x="10300" data-y="1000" data-rotate="270" data-scale="6">
+        <img src="image/monolithic.png"></img>
+    </div>
+
+    <div class="step" data-x="13000" data-y="1000" data-rotate="270" data-scale="6">
+        <h1>By definition...</h1>
+        <span class="footnote">Microservices are a software architecture that involves developing software applications or
+          platforms as many finely grained services that <strong>can be independently designed, developed, tested and deployed.</strong></span>
+        <p><span class="footfootnote"><sup>*</sup>In my humble opinion, the keywords are <strong>designed</strong> and <strong>deployed</strong>.</span></p>
+    </div>
+
+    <div class="step" data-x="18000" data-y="1000" data-rotate="270" data-scale="6">
+        <h1>How is this different than service-oriented architecture ("SOA")?</h1>
+        <span class="footnote">Although in both cases we are indeed talking about a set of services, the <strong>ambition<sup>*</sup></strong> of these
+  services is different.</span>
+    </div>
+
+    <div class="step" data-x="18000" data-y="-6000" data-rotate="270" data-scale="6">
+      <h1>Speaking about ambition...</h1>
+      <span class="footnote"><strong>SOA</strong> attempts to put these services forward to anybody who wants to use them.</span>
+    </div>
+
+    <div class="step" data-x="20000" data-y="-6000" data-rotate="270" data-scale="6">
+      <span class="footnote"><strong>Microservices</strong>, alternatively, are created with a much more focused and limited goal
+      in mind, which is acting as a part of single distributed system</span>.
+      <p><span class="footnote">Unlike with SOA, microservices often exist <strong>implicitly</strong>. Microservices are well-known to the consumers, and therefore do not require
+        service description.</span></p>
+    </div>
+
+    <div class="step" data-x="24000" data-y="-6000" data-rotate="270" data-scale="6">
+      <h1>To summarize the SOA vs Microservices...</h1>
+      <span class="footnote">SOA was designed with an <strong>ambition to solve very complex enterprise
+        architecture problems</strong>, with the goal of facilitating a high level of reusability.</span>
+      <p><span class="footnote">In contrast, microservices architecture was embraced by companies attempting to <strong>scale a
+        single web property to web scale levels, enable continuous evolution, make engineering teams more efficient,
+        and avoid technology lock-in.</strong></span></p>
+    </div>
+
+    <div class="step" data-x="4500" data-y="-3500" data-rotate="90" data-scale="4">
+      <b>Let's talk about the benefits!</b>
+    </div>
+
+    <div class="step" data-x="3000" data-y="-3500" data-rotate="90" data-scale="4">
+      <h1>From developer perspective</h1>
+      <p><span class="footnote">Smaller code base &gt; faster IDE and build;</span></p>
+      <p><span class="footnote">Smaller code base &gt; easier code dependency management;<sup>*</sup></span></p>
+      <p><span class="footnote">Autonomous &gt; easier to build tests;</span></p>
+      <p><span class="footnote">Autonomous &gt; less dependency again! E.g. less constraint to do refactoring</span></p>
+      <p><span class="footfootnote"><sup>*</sup>In exhange of service dependency management</span></p>
+    </div>
+
+    <div class="step" data-x="800" data-y="-3500" data-rotate="90" data-scale="4">
+      <h1>From architect perspective</h1>
+      <p><span class="footnote">Use suitable stack to solve a problem;</span></p>
+      <p><span class="footnote">Easier to scale bottleneck;</span></p>
+      <p><span class="footnote">More residency;</span></p>
+      <p><span class="footnote">More suitable for cloud / container ecosystems<sup>*</sup></span></p>
+      <p><span class="footfootnote"><sup>*</sup>Will talk about them later...</span></p>
+    </div>
+
+    <div class="step" data-x="-800" data-y="-3500" data-rotate="90" data-scale="4">
+      <h1>From business owner perspective</h1>
+      <p><span class="footnote">Enjoy what architects are enjoying :)</span></p>
+      <p><span class="footnote">Faster time-to-market and better user experience!</span></p>
+    </div>
+
+    <div class="step" data-x="4600" data-y="-8000" data-rotate="90" data-scale="4">
+      <b>Organizational Chanlleges</b>
+    </div>
+
+    <div class="step" data-x="3500" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Architectural evolution</h1>
+        <span class="footnote">Evolving to microservices from a traditional monolith is not always straightforward<sup>*</sup>, and probably require rearchitecture and replatforming to get there.</span>
+        <p><span class="footfootnote"><sup>*</sup>It is always not straightforward, i.e. it is never straightforward.</span></p>
+    </div>
+
+    <div class="step" data-x="2000" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Improving DevOps maturity</h1>
+        <span class="footnote">To be successful with microservices, teams need to improve the level of collaboration between development, test and IT operations.</span>
+    </div>
+
+    <div class="step" data-x="500" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Increased automation</h1>
+        <span class="footnote">To successfully deliver microservices, we need much higher degree of build, release, deployment and environment automation into the technology stack.</span>
+    </div>
+
+    <div class="step" data-x="-900" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Upskilling your people (hard-skills)</h1>
+        <span class="footnote">Need <strong>investment, training</strong> and practice to deploy and operate a microservice-based system successfully.</span>
+    </div>
+
+    <div class="step" data-x="-2800" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1><strong>MOST</strong> important of all is to cultivate your team to become full-stack developer</h1>
+        <span class="footnote">Need mental replatform and transformation... Microservices enables complete ownership by a <strong>self-contained and cross-functional single team</strong>, from definition through development, deployment, operations, and sunsetting</span>
+    </div>
+
+    <div class="step" data-x="4600" data-y="-12000" data-rotate="90" data-scale="4">
+      <b>Technical Chanlleges</b>
+    </div>
+
+    <div class="step" data-x="3200" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>Expecting eventual consistency</h1>
+        <span class="footnote">This one is <strong>critical</strong>! ACID<sup>*</sup> is likely GONE! Project team MUST convince business owner to understand and accept the behavior of eventual consistency!</span>
+        <p><span class="footnote">Some patterns will help, e.g. <strong>Compensating transaction pattern</strong>.</span><p>
+          <span class="footfootnote"><sup>*</sup>We prefer BASE (Basically Available, Soft state, Eventual consistency) over ACID.</span></p>
+    </div>
+
+    <div class="step" data-x="1200" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>Design for failure</h1>
+        <span class="footnote">Entire microservice system is about moving parts, i.e. many services with many remote calls</span>
+        <p><span class="footnote">Design patterns like <strong>Circuit Breaker</strong>, <strong>Bulk-head</strong> are there to help.</span></p>
+    </div>
+
+    <div class="step" data-x="-600" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>Test for failure</h1>
+        <span class="footnote">Do not forget to test your "design for failure"... Put resiliency testing into your testing pipeline.</span>
+        <p><span class="footnote">Tools like <strong>IBM Gremlin / NetFlix Chaos Monkey</strong> can help.</span></p>
+    </div>
+
+    <div class="step" data-x="-2400" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>You can't manage what you can't measure</h1>
+        <span class="footnote">Each microservice should have built-in performance data and metrics exposed.</span>
+        <p><span class="footnote">Libraries like <strong>Spring Actuator</strong>, <strong>Dropwizard Metrics</strong> help.</span></p>
+    </div>
+
+    <div class="step" data-x="-4100" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>Do not underestimate network latency</h1>
+        <p><span class="footnote">Cache aggressively (and manage them well).</span></p>
+        <p><span class="footnote">Put performance testing into your testing pipeline.</span></p>
+    </div>
+
+    <div class="step" data-x="-6300" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>Service Management</h1>
+        <span class="footnote">How can a service be discovered by others?</span>
+        <p><span class="footnote">Do we need a dedicated service registry<sup>*</sup> (like Consul)?</span></p>
+        <p><span class="footnote">Is the hosting environment (PaaS / CaaS) having built-in feature?</span></p>
+        <p><span class="footnote">Server or client-side load-balancing?</span></p>
+        <p><span class="footnote">Self-register (and deregister) on instance create and destroy?</span></p>
+        <p><span class="footfootnote"><sup>*</sup>See Service Discovery section of <a href="http://microservices.io/patterns/index.html" target="_blank">here</a></span></p>
+    </div>
+
+    <div class="step" data-x="-8500" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>Operational complexity</h1>
+        <span class="footnote">Again, all are moving parts and be prepared to have hundreds of instances. Each microservice should have built-in health-check (and exposed) and self-healing.</span>
+    </div>
+
+    <!-- ************************** break ************************** -->
+
+    <div id="its" class="step" data-x="-10000" data-y="-12000" data-rotate="90" data-scale="5">
+        <p><b>Questions? Questions? Questions?</b></p>
+    </div>
+
+    <div class="step" data-x="4500" data-y="-16000" data-rotate="90" data-scale="4">
+      <b>What does exactly a Microservice look like<sup>*</sup>?</b>
+      <p><span class="footfootnote"><sup>*</sup>And why is it usually modeled as hexagon? E.g. IBM, NetFlix, Martin Fowler, etc</span></p>
+    </div>
+
+    <div class="step" data-x="3000" data-y="-16000" data-rotate="90" data-scale="4">
+        <img src="image/microservices_101.png"></img>
+    </div>
+
+    <div class="step" data-x="1000" data-y="-16000" data-rotate="90" data-scale="4">
+      <h1>There are a few popular frameworks for Java...</h1>
+      <p><span class="footnote"> - Dropwizard, early proponents and pioneer</span></p>
+      <p><span class="footnote"> - Spring Boot, mature player</span></p>
+      <p><span class="footnote"> - Wildfly Swarm, relatively new player</span></p>
+      <p><span class="footnote">We will highlight a few areas today...</span></p>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="-16000" data-rotate="90" data-scale="4">
+      <h1>Application Packaging</h1>
+      <p><span class="footnote">We used to package application as war / ear files and deploy them to application server like WAS.</span></p>
+      <p><span class="footnote">In microservices, there is a new way to package your application!</span></p>
+    </div>
+
+    <div class="step" data-x="-2100" data-y="-16000" data-rotate="90" data-scale="3">
+        <b>Über Jar</b>
+    </div>
+
+    <div class="step" data-x="-3300" data-y="-16000" data-rotate="90" data-scale="4">
+      <p><span class="footnote">It packages all dependencies and application code into a <strong>self-contained JAR</strong> with a flat class loader.
+        This makes it easier to understand application startup, dependency ordering, and log statements;
+        but more importantly, it helps <strong>reduce the number of moving pieces</strong> required to take an app safely to production.</span></p>
+    </div>
+
+    <div class="step" data-x="-4700" data-y="-16000" data-rotate="90" data-scale="4">
+      <p><span class="footnote">All you need to run your application is</span></p>
+      <b>java -jar &lt;name.jar&gt;</b>
+      <p><b>That's it!</b></p>
+    </div>
+
+    <div class="step" data-x="-6000" data-y="-16000" data-rotate="90" data-scale="4">
+      <p>Instead of running an application in an application container, we now run an application container inside your application!</p>
+      <b>Woo!</b>
+    </div>
+
+    <div class="step" data-x="-7400" data-y="-16000" data-rotate="90" data-scale="4">
+      <h1>Production Ready</h1>
+      <p><span class="footnote">All these frameworks come with built-in health data, performance metrics accessible via different ways.</span></p>
+    </div>
+
+    <div class="step" data-x="-9200" data-y="-16000"  data-rotate="90" data-scale="4">
+        <img src="image/sample-metrics-1.png"></img>
+    </div>
+
+    <div class="step" data-x="-11000" data-y="-16000"  data-rotate="90" data-scale="4">
+      <img src="image/sample-metrics-2.png"></img>
+    </div>
+
+    <div class="step" data-x="-12500" data-y="-16000" data-rotate="90" data-scale="4">
+      <h1>At last...</h1>
+      <p><span class="footnote">These frameworks give very good support to annotations and externalizing configurations.</span></p>
+    </div>
+
+    <!-- Ending -->
+    <div id="source" class="step" data-x="7000" data-y="5000" data-rotate="20" data-scale="4">
+        <b>That's it!</b>
+        <p>Want to know more?</p>
+        <p>Use the source, Luke!</p>
+        <p><span class="footfootnote">Up next is Cloud / Container Development and Design Patterns!</span></p>
+    </div>
+
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="15">
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) {
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
