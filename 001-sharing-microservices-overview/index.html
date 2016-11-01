@@ -171,24 +171,45 @@
     </div>
 
     <div class="step" data-x="18000" data-y="1000" data-rotate="270" data-scale="6">
+        <h1>Microservices are used to...</h1>
+        <span class="footnote">compose a complex application using
+          <ul>
+            <li>&nbsp;&gt; “small”</li>
+            <li>&nbsp;&gt; independent (autonomous)</li>
+            <li>&nbsp;&gt; replaceable</li>
+            <li>&nbsp;&gt; processes</li>
+          </ul>
+            that communicate
+          <ul>
+            <li>&nbsp;&gt; via language-agnostic APIs</li>
+            <li>&nbsp;&gt; synchronously and asynchronously</li>
+          </ul>
+
+        </span>
+    </div>
+
+    <div class="step" data-x="21000" data-y="0" data-rotate="270" data-scale="6">
+        <img src="image/microservices-ibm.png"></img>
+    </div>
+
+    <div class="step" data-x="23000" data-y="1000" data-rotate="270" data-scale="6">
         <h1>How is this different than service-oriented architecture ("SOA")?</h1>
         <span class="footnote">Although in both cases we are indeed talking about a set of services, the <strong>ambition<sup>*</sup></strong> of these
   services is different.</span>
     </div>
 
-    <div class="step" data-x="18000" data-y="-6000" data-rotate="270" data-scale="6">
+    <div class="step" data-x="20000" data-y="-6000" data-rotate="270" data-scale="6">
       <h1>Speaking about ambition...</h1>
       <span class="footnote"><strong>SOA</strong> attempts to put these services forward to anybody who wants to use them.</span>
     </div>
 
-    <div class="step" data-x="20000" data-y="-6000" data-rotate="270" data-scale="6">
+    <div class="step" data-x="22200" data-y="-6000" data-rotate="270" data-scale="6">
       <span class="footnote"><strong>Microservices</strong>, alternatively, are created with a much more focused and limited goal
       in mind, which is acting as a part of single distributed system</span>.
-      <p><span class="footnote">Unlike with SOA, microservices often exist <strong>implicitly</strong>. Microservices are well-known to the consumers, and therefore do not require
-        service description.</span></p>
+      <p><span class="footnote">Unlike with SOA, microservices often exist <strong>implicitly</strong>. Microservices are well-known to the consumers as they are inter-process communication (IPC) within single application.</span></p>
     </div>
 
-    <div class="step" data-x="24000" data-y="-6000" data-rotate="270" data-scale="6">
+    <div class="step" data-x="26000" data-y="-6000" data-rotate="270" data-scale="6">
       <h1>To summarize the SOA vs Microservices...</h1>
       <span class="footnote">SOA was designed with an <strong>ambition to solve very complex enterprise
         architecture problems</strong>, with the goal of facilitating a high level of reusability.</span>
@@ -222,7 +243,8 @@
     <div class="step" data-x="-800" data-y="-3500" data-rotate="90" data-scale="4">
       <h1>From business owner perspective</h1>
       <p><span class="footnote">Enjoy what architects are enjoying :)</span></p>
-      <p><span class="footnote">Faster time-to-market and better user experience!</span></p>
+      <p><span class="footnote">Faster time-to-market!</span></p>
+      <p><span class="footnote">Less "under maintenance" and better user experience!</span></p>
     </div>
 
     <div class="step" data-x="4600" data-y="-8000" data-rotate="90" data-scale="4">
@@ -255,15 +277,25 @@
         <span class="footnote">Need mental replatform and transformation... Microservices enables complete ownership by a <strong>self-contained and cross-functional single team</strong>, from definition through development, deployment, operations, and sunsetting</span>
     </div>
 
-    <div class="step" data-x="4600" data-y="-12000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="6800" data-y="-12000" data-rotate="90" data-scale="4">
       <b>Technical Chanlleges</b>
+    </div>
+
+    <div class="step" data-x="5600" data-y="-12000" data-rotate="90" data-scale="4">
+        <h1>How "micro" a service should be?</h1>
+        <p><span class="footnote">Instead of thinking in a pure data entity way... define bounded contexts with Domain-Driven Design (DDD). Some good reference below.</span><p>
+        <ul>
+          <li>&nbsp;&gt; <a href="http://stackoverflow.com/questions/1222392/can-someone-explain-ddd-in-plain-english-please/1222488#1222488">DDD in plain English</a></li>
+          <li>&nbsp;&gt; Understand DDD in <a href="https://vaughnvernon.co/wordpress/wp-content/uploads/2014/10/DDD_COMMUNITY_ESSAY_AGGREGATES_PART_1.pdf">5</a> + <a href="https://vaughnvernon.co/wordpress/wp-content/uploads/2014/10/DDD_COMMUNITY_ESSAY_AGGREGATES_PART_2.pdf">5</a> + <a href="https://vaughnvernon.co/wordpress/wp-content/uploads/2014/10/DDD_COMMUNITY_ESSAY_AGGREGATES_PART_1.pdf">5</a> pages</a></li>
+          <li>&nbsp;&gt; <a href="https://play.google.com/store/books/details?id=X7DpD5g3VP8C">Understand DDD in 650 pages</a></li>
+        </ul>
     </div>
 
     <div class="step" data-x="3200" data-y="-12000" data-rotate="90" data-scale="4">
         <h1>Expecting eventual consistency</h1>
-        <span class="footnote">This one is <strong>critical</strong>! ACID<sup>*</sup> is likely GONE! Project team MUST convince business owner to understand and accept the behavior of eventual consistency!</span>
-        <p><span class="footnote">Some patterns will help, e.g. <strong>Compensating Transaction pattern, Event Sourcing pattern</strong>, etc.</span><p>
-          <span class="footfootnote"><sup>*</sup>Data management of microservices is a HUGE and extrememly difficult topic that will be talked in separate sharing!</span></p>
+        <span class="footnote">This one is <strong>critical</strong>! ACID<sup>*</sup> is likely GONE in some areas! Project team MUST convince business owner to understand and accept the behavior of eventual consistency!</span>
+        <p><span class="footnote">Some patterns will help, e.g. <strong>Compensating Transaction, Event Sourcing, CQRS patterns</strong>, etc.</span><p>
+        <span class="footfootnote"><sup>*</sup>Data management of microservices is a HUGE and extremely difficult topic!</span></p>
     </div>
 
     <div class="step" data-x="1100" data-y="-12000" data-rotate="90" data-scale="4">
@@ -288,16 +320,55 @@
         <h1>Do not underestimate network latency</h1>
         <p><span class="footnote">Cache aggressively (and manage them well).</span></p>
         <p><span class="footnote">Put performance testing into your testing pipeline.</span></p>
+        <p><span class="footnote">When you have too many calls, review your DDD model.</span></p>
     </div>
 
     <div class="step" data-x="-6300" data-y="-12000" data-rotate="90" data-scale="4">
         <h1>Service Management</h1>
         <span class="footnote">How can a service be discovered by others?</span>
-        <p><span class="footnote">Do we need a dedicated service registry<sup>*</sup> (like Consul)?</span></p>
+        <p><span class="footnote">Do we need a dedicated service registry<sup>*</sup> (like Eureka / Consul)?</span></p>
         <p><span class="footnote">Is the hosting environment (PaaS / CaaS) having built-in feature?</span></p>
         <p><span class="footnote">Server or client-side load-balancing?</span></p>
         <p><span class="footnote">Self-register (and deregister) on instance create and destroy?</span></p>
         <p><span class="footfootnote"><sup>*</sup>See Service Discovery section of <a href="http://microservices.io/patterns/index.html" target="_blank">here</a></span></p>
+    </div>
+
+    <div class="step" data-x="-6300" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Service Management should be considered in both build time and runtime</h1>
+        <span class="footnote">Build time - Consumer-driven Contract with Pact + Pact Broker</span>
+        <p><span class="footnote">Runtime - Service Discovery + Service Proxy</span></p>
+    </div>
+
+    <div class="step" data-x="-8000" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Runtime - Service Discovery</h1>
+        <span class="footnote">To enable dynamically access scalable microservice endpoints
+          <ul>
+            <li>&nbsp;&gt; Register internal microservice endpoints (containers)</li>
+            <li>&nbsp;&gt; Ensure healthy endpoints</li>
+            <li>&nbsp;&gt; Dynamically discover available service endpoints</li>
+          </ul>
+        </span>
+    </div>
+
+    <div class="step" data-x="-9300" data-y="-8000" data-rotate="90" data-scale="4">
+        <img src="image/service-discovery-101.png"></img>
+    </div>
+
+    <div class="step" data-x="-11000" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Runtime - Service Proxy</h1>
+        <span class="footnote"><p>&nbsp;&gt; Synchronous communication between microservices</p></span>
+        <span class="footnote"><p>&nbsp;&gt; Rules based load balancing</p></span>
+        <span class="footnote"><p>&nbsp;&gt; Enables resiliency testing by injecting delays and failures</p></span>
+        <span class="footnote">In short, it works <strong>in conjunction with Service Discovery to connect microservices in a resilient, scalable manner</strong></span>
+    </div>
+
+    <div class="step" data-x="-13000" data-y="-8000" data-rotate="90" data-scale="4">
+        <img src="image/service-discovery-proxy.png"></img>
+    </div>
+
+    <div class="step" data-x="-14500" data-y="-8000" data-rotate="90" data-scale="4">
+        <h1>Build time - Consumer-driven Contract with Pact + Pact Broker</h1>
+        <span class="footnote">Let's see a demo!</span>
     </div>
 
     <div class="step" data-x="-9000" data-y="-12000" data-rotate="90" data-scale="4">
@@ -312,16 +383,20 @@
         <p><b>Questions? Questions? Questions?</b></p>
     </div>
 
-    <div class="step" data-x="4500" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="6000" data-y="-16000" data-rotate="90" data-scale="4">
       <b>What does exactly a Microservice look like<sup>*</sup>?</b>
       <p><span class="footfootnote"><sup>*</sup>And why is it usually modeled as hexagon? E.g. IBM, NetFlix, Martin Fowler, etc</span></p>
     </div>
 
-    <div class="step" data-x="3000" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="4500" data-y="-16000" data-rotate="90" data-scale="4">
         <img src="image/microservices_101.png"></img>
     </div>
 
-    <div class="step" data-x="1000" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="2000" data-y="-16000" data-rotate="90" data-scale="4">
+        <img width="900" height="700" src="image/ibm-microservices-ref-arch.png"></img>
+    </div>
+
+    <div class="step" data-x="-300" data-y="-16000" data-rotate="90" data-scale="4">
       <h1>There are a few popular frameworks for Java...</h1>
       <p><span class="footnote"> - Dropwizard, early proponents and pioneer</span></p>
       <p><span class="footnote"> - Spring Boot, mature player</span></p>
@@ -329,49 +404,60 @@
       <p><span class="footnote">We will highlight a few areas today...</span></p>
     </div>
 
-    <div class="step" data-x="-1000" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="-2000" data-y="-16000" data-rotate="90" data-scale="4">
       <h1>Application Packaging</h1>
       <p><span class="footnote">We used to package application as war / ear files and deploy them to application server like WAS.</span></p>
       <p><span class="footnote">In microservices, there is a new way to package your application!</span></p>
     </div>
 
-    <div class="step" data-x="-2100" data-y="-16000" data-rotate="90" data-scale="3">
+    <div class="step" data-x="-3100" data-y="-16000" data-rotate="90" data-scale="3">
         <b>Über Jar</b>
     </div>
 
-    <div class="step" data-x="-3300" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="-4300" data-y="-16000" data-rotate="90" data-scale="4">
       <p><span class="footnote">It packages all dependencies and application code into a <strong>self-contained JAR</strong> with a flat class loader.
         This makes it easier to understand application startup, dependency ordering, and log statements;
         but more importantly, it helps <strong>reduce the number of moving pieces</strong> required to take an app safely to production.</span></p>
     </div>
 
-    <div class="step" data-x="-4700" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="-5700" data-y="-16000" data-rotate="90" data-scale="4">
       <p><span class="footnote">All you need to run your application is</span></p>
       <b>java -jar &lt;name.jar&gt;</b>
       <p><b>That's it!</b></p>
     </div>
 
-    <div class="step" data-x="-6000" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="-7000" data-y="-16000" data-rotate="90" data-scale="4">
       <p>Instead of running an application in an application container, we now run an application container inside your application!</p>
       <b>Woo!</b>
     </div>
 
-    <div class="step" data-x="-7400" data-y="-16000" data-rotate="90" data-scale="4">
+    <div class="step" data-x="-8400" data-y="-16000" data-rotate="90" data-scale="4">
       <h1>Production Ready</h1>
       <p><span class="footnote">All these frameworks come with built-in health data, performance metrics accessible via different ways.</span></p>
     </div>
 
-    <div class="step" data-x="-9200" data-y="-16000"  data-rotate="90" data-scale="4">
+    <div class="step" data-x="-10200" data-y="-16000"  data-rotate="90" data-scale="4">
         <img src="image/sample-metrics-1.png"></img>
     </div>
 
-    <div class="step" data-x="-11000" data-y="-16000"  data-rotate="90" data-scale="4">
+    <div class="step" data-x="-12000" data-y="-16000"  data-rotate="90" data-scale="4">
       <img src="image/sample-metrics-2.png"></img>
     </div>
 
-    <div class="step" data-x="-12500" data-y="-16000" data-rotate="90" data-scale="4">
-      <h1>At last...</h1>
-      <p><span class="footnote">These frameworks give very good support to annotations and externalizing configurations.</span></p>
+    <div class="step" data-x="-14700" data-y="-16000"  data-rotate="90" data-scale="4">
+      <img src="image/spring-boot-admin-screenshot-trace.png"></img>
+    </div>
+
+    <div class="step" data-x="-18500" data-y="-16000"  data-rotate="90" data-scale="4">
+      <img src="image/spring-boot-admin-screenshot-hystrix.png"></img>
+    </div>
+
+    <div class="step" data-x="-21500" data-y="-16000" data-rotate="90" data-scale="4">
+      <h1>At last, these frameworks give very good annotation support to integrate with...</h1>
+      <p><span class="footnote">&nbsp;&gt; Externalizing configurations</span></p>
+      <p><span class="footnote">&nbsp;&gt; Message broker (e.g. Kafka)</span></p>
+      <p><span class="footnote">&nbsp;&gt; Distributed tracing (e.g. Zipkin)</span></p>
+      <p><span class="footnote">&nbsp;&gt; etc...</span></p>
     </div>
 
     <!-- Ending -->
@@ -379,7 +465,7 @@
         <b>That's it!</b>
         <p>Want to know more?</p>
         <p>Use the source, Luke!</p>
-        <p><span class="footfootnote">Up next are <strong>Design Patterns for Microservices!</strong> (Hopefully in August 2016) and <strong>Designing Microservices - Your Data</strong> (Hopefully in September 2016)!</span></p>
+        <p><span class="footfootnote">Up next are <strong>Design Patterns for Microservices!</strong> (Hopefully in Dec 2016) and <strong>Designing Microservices - Your Data</strong> (Hopefully in Jan 2017)!</span></p>
     </div>
 
 
